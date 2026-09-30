@@ -32,13 +32,6 @@
         .animate-bounce-short {
             animation: bounce-short 0.5s ease-in-out infinite;
         }
-        @keyframes pulse-scale {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-        }
-        .animate-pulse-scale {
-            animation: pulse-scale 2s ease-in-out infinite;
-        }
         @keyframes wiggle {
             0%, 100% { transform: rotate(0deg); }
             25% { transform: rotate(-6deg); }
@@ -59,12 +52,12 @@
 
     <header class="w-full max-w-5xl text-center mb-6">
         <div class="inline-block bg-white/95 backdrop-blur-md px-8 py-4 rounded-2xl shadow-lg border-4 border-amber-400 mb-2 animate-float">
-            <span class="text-3xl md:text-4xl text-purple-600 font-bold">🍄 헬로메이플 디지털 요정의 O/X 퀴즈 모험 ⚔️</span>
+            <span class="text-3xl md:text-4xl text-purple-600 font-bold">🍄 헬로메이플 디지털 요정의 O/X 퀴즈 모험 ⚔️️</span>
         </div>
         <p class="text-base md:text-lg text-slate-700 font-poor font-bold">메이플 친구들과 함께 헬로메이플 & 스마트폰 안전 지식을 렙업해볼까요?</p>
     </header>
 
-    <!-- 헬로메이플 스타일 게임 UI 컨테이너 (빔프로젝트 가독성 최적화: max-w 확장 및 글씨 확대) -->
+    <!-- 헬로메이플 스타일 게임 UI 컨테이너 -->
     <main id="app-container" class="w-full max-w-5xl maple-box rounded-3xl p-6 md:p-10 relative overflow-hidden transition-all duration-500">
         
         <!-- Start Screen -->
@@ -97,14 +90,14 @@
                 <span id="current-score" class="text-2xl md:text-3xl font-bold text-pink-600">⭐ 경험치: 0점</span>
             </div>
 
-            <!-- Question Box (글씨 크기 대폭 확대) -->
+            <!-- Question Box -->
             <div class="bg-gradient-to-r from-blue-50 to-indigo-100 p-8 md:p-10 rounded-3xl border-4 border-indigo-300 mb-8 shadow-sm">
                 <p id="question-text" class="text-3xl md:text-4xl font-extrabold text-slate-900 text-center leading-relaxed">
                     문장이 여기에 표시됩니다.
                 </p>
             </div>
 
-            <!-- O / X Buttons (파스텔 톤 + 큼직한 터치 영역) -->
+            <!-- O / X Buttons (파스텔 블루 & 파스텔 핑크/피치 톤) -->
             <div class="grid grid-cols-2 gap-6 mb-4">
                 <button onclick="answerQuiz('O')" class="group relative bg-sky-200 hover:bg-sky-300 text-sky-950 font-bold py-12 rounded-3xl shadow-md transform hover:-translate-y-2 transition-all cursor-pointer flex flex-col items-center justify-center border-b-8 border-sky-400 active:border-b-0 active:translate-y-1">
                     <span class="text-7xl md:text-8xl mb-2 group-hover:scale-125 transition-transform duration-300">⭕</span>
@@ -123,7 +116,6 @@
             <h2 id="feedback-title" class="text-4xl md:text-5xl font-bold mb-4 text-purple-700">정답입니다!</h2>
             <div class="bg-amber-50 border-4 border-amber-300 p-8 md:p-10 rounded-3xl mb-8 text-left shadow-md transform transition-all">
                 <p class="text-base md:text-lg font-extrabold text-amber-600 uppercase mb-3 tracking-wider">💡 메이플 척척박사 해설</p>
-                <!-- 해설 폰트 크기 및 두께 업그레이드 -->
                 <p id="feedback-desc" class="text-2xl md:text-3xl text-slate-900 leading-relaxed font-bold font-poor">
                     해설 내용이 여기에 들어갑니다.
                 </p>
@@ -187,9 +179,9 @@
                 desc: "아바타는 가상 세계에서 나를 표현하고 대신 모험을 떠나는 내 분신 같은 캐릭터예요."
             },
             {
-                q: "3. NPC(Non-Player Character)는 게임 속에서 나를 직접 조종하는 나의 진짜 친구 캐릭터이다.",
-                answer: "X",
-                desc: "NPC는 컴퓨터가 움직이는 캐릭터로, 게임 안에서 퀘스트(임무)를 주거나 도움말을 알려주는 역할을 해요."
+                q: "3. NPC(Non-Player Character)는 내가 직접 조종하는 캐릭터가 아니라, 컴퓨터가 움직이며 퀘스트를 주는 캐릭터이다.",
+                answer: "O",
+                desc: "NPC는 내가 직접 조종하는 내 캐릭터가 아니라, 컴퓨터(시스템)가 움직이면서 게임 속에서 임무(퀘스트)를 주거나 말을 건네주는 캐릭터예요!"
             },
             {
                 q: "4. 보이스피싱은 전화로 사람을 속여서 소중한 돈을 가로채가는 무서운 범죄이다.",
@@ -267,10 +259,6 @@
             questionTextEl.innerText = currentQ.q;
             quizMascot.innerText = mapleBuddies[currentIdx % mapleBuddies.length];
         }
-
-        (function setup() {
-            // 초기 설정
-        })();
 
         function answerQuiz(selectedOption) {
             const currentQ = quizData[currentIdx];
